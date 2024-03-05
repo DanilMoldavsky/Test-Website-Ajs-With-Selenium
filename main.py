@@ -10,6 +10,7 @@ import time
 service = Service('chromedriver\chromedriver.exe')
 url = 'https://ajs.su/'
 options = webdriver.ChromeOptions()
+options.add_argument('--log-level=3')
 options.add_argument('--disable-blink-features=AutomationControlled')
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
 options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
@@ -44,14 +45,16 @@ def get_source(url):
         
         message_input = driver.find_element(By.ID, 'opened-textfield')
         message_input.send_keys('Добрый вечер')
-        message_input.send_keys(Keys.ENTER)
+        # message_input.send_keys(Keys.ENTER)
         print('Сообщение отправлено')
-        time.sleep(20)
+        
         
     except Exception as e:
         print(e)
         
     finally:
+        # time.sleep(20)
+        time.sleep(2)
         driver.close()
         driver.quit()
 
