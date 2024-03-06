@@ -9,7 +9,7 @@ import time
 PATH_CNT = 'cnt.json'
 PATH_MESSAGE = 'messages.txt'
 PATH_CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-PATH_DRIVER = 'chromedriver\chromedriver.exe'
+PATH_DRIVER = 'chromedriver\\chromedriver.exe'
 
 service = Service(PATH_DRIVER)
 url = 'https://ajs.su/'
