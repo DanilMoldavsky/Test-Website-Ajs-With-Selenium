@@ -21,14 +21,14 @@ options.binary_location = PATH_CHROME
 
 
 def get_message(path:str):
-    choice = int(input('Выберите метод: 1 - Случайное сообщение, 2 - Сообщение из файла: '))
+    choice = int(input('Выберите метод -> 1 - Случайное сообщение, 2 - Сообщение из файла: '))
     messages = Utilities.get_string(path)
     
     if choice == 1:
         return random.choice(messages)
     else:
         choice_mess = int(input('Введите номер сообщения, если считать сверху стрОки: '))
-        return messages[choice_mess]
+        return messages[choice_mess - 1]
 
 def send_message(url:str, message:str):
     try:
@@ -53,16 +53,15 @@ def send_message(url:str, message:str):
         
         message_input = driver.find_element(By.ID, 'opened-textfield')
         message_input.send_keys(message)
-        # message_input.send_keys(Keys.ENTER)
-        print('Сообщение отправлено')
+        message_input.send_keys(Keys.ENTER)
+        print(f'Сообщение {message} отправлено')
         
         
     except Exception as e:
         print(e)
         
     finally:
-        # time.sleep(20)
-        time.sleep(2)
+        time.sleep(20)
         driver.close()
         driver.quit()
 
