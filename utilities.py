@@ -4,6 +4,8 @@ class Utilities:
         self.strings = []
     
     def get_string(self, path):
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding='utf-8') as f:
             self.strings = f.read().splitlines()
         return self.strings
+
+    

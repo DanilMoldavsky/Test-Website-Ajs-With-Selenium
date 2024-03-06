@@ -5,15 +5,16 @@ from selenium.webdriver.common.keys import Keys
 import time
 # точнее options.add_argument("--headless=new")
 
+PATH_CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+PATH_DRIVER = 'chromedriver\chromedriver.exe'
 
-
-service = Service('chromedriver\chromedriver.exe')
+service = Service(PATH_DRIVER)
 url = 'https://ajs.su/'
 options = webdriver.ChromeOptions()
 options.add_argument('--log-level=3')
 options.add_argument('--disable-blink-features=AutomationControlled')
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
-options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+options.binary_location = PATH_CHROME
 
 
 def get_source(url):
@@ -22,12 +23,6 @@ def get_source(url):
         driver.delete_all_cookies()
         driver.get(url)
         
-        
-        
-        # element = driver.find_element(By.XPATH, '/html/body/div/div[1]')
-        # driver.execute_script(
-        #     "arguments[0].click();", element)
-        # time.sleep(5)
         div_to_frame = driver.find_element(By.XPATH, '//div[@id="carrotquest-messenger-collapsed-container"]/div/div/iframe')
         driver.switch_to.frame(div_to_frame)
 
