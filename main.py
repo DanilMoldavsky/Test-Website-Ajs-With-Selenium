@@ -6,6 +6,7 @@ from utilities import Utilities
 import random
 import time
 
+PATH_CNT = 'cnt.json'
 PATH_MESSAGE = 'messages.txt'
 PATH_CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 PATH_DRIVER = 'chromedriver\chromedriver.exe'
@@ -54,16 +55,19 @@ def send_message(url:str, message:str):
         message_input = driver.find_element(By.ID, 'opened-textfield')
         message_input.send_keys(message)
         message_input.send_keys(Keys.ENTER)
-        print(f'Сообщение {message} отправлено')
-        
         
     except Exception as e:
+        Utilities.plus_try(PATH_CNT)
         print(e)
-        
+    
+    else:
+        Utilities.plus_cnt(PATH_CNT)
+        print(f'Сообщение {message} отправлено')
+    
     finally:
-        time.sleep(20)
         driver.close()
         driver.quit()
+        time.sleep(20)
 
 def main():
     message = get_message(PATH_MESSAGE)
