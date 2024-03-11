@@ -37,16 +37,16 @@ def send_message(url:str, message:str):
         driver.delete_all_cookies()
         driver.get(url)
         
-        div_to_frame = driver.find_element(By.XPATH, '//div[@id="carrotquest-messenger-collapsed-container"]/div/div/iframe')
-        driver.switch_to.frame(div_to_frame)
-
-        driver.find_element(By.XPATH, '/html/body/div/div[1]').click()
+        frame_sup = driver.find_element(By.ID, 'carrot-messenger-collapsed-frame')
+        driver.switch_to.frame(frame_sup)
+        
+        driver.find_element(By.XPATH, '/html/body/div').click()
         time.sleep(5)
         
         driver.switch_to.default_content()
         
-        frame2 = driver.find_element(By.ID, 'carrot-messenger-frame')
-        driver.switch_to.frame(frame2)
+        frame_sup2 = driver.find_element(By.ID, 'carrot-messenger-frame')
+        driver.switch_to.frame(frame_sup2)
         
         driver.find_element(By.XPATH, '//*[@id="carrotquest-messenger"]/div/div/div[2]/div/div[1]/div/div/div[1]/div[1]/button').click()
         time.sleep(5)
