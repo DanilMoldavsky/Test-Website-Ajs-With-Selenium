@@ -15,7 +15,7 @@ service = Service(PATH_DRIVER)
 url = 'https://ajs.su/'
 options = webdriver.ChromeOptions()
 options.add_argument('--log-level=3')
-# options.add_argument("--headless=new")
+options.add_argument("--headless=new")
 options.add_argument('--disable-blink-features=AutomationControlled')
 options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36")
 options.binary_location = PATH_CHROME
@@ -62,7 +62,7 @@ def send_message(url:str, message:str):
         
         message_input = driver.find_element(By.ID, 'opened-textfield')
         message_input.send_keys(message)
-        # message_input.send_keys(Keys.ENTER)
+        message_input.send_keys(Keys.ENTER)
         
     except Exception as e:
         Utilities.plus_try(PATH_CNT)
