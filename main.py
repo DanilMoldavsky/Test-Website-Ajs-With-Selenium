@@ -38,13 +38,13 @@ def send_message(url:str, message:str):
         driver.get(url)
         
         #! Попап для ивентов
-        # frame_popup = driver.find_element(By.ID, 'carrot-popup-small-frame')
-        # driver.switch_to.frame(frame_popup)
+        frame_popup = driver.find_element(By.ID, 'carrot-popup-small-frame')
+        driver.switch_to.frame(frame_popup)
         
-        # driver.find_element(By.XPATH, '//*[@id="carrotquest-messenger-smallpopup"]/div[1]/div').click()
-        # time.sleep(5)
+        driver.find_element(By.XPATH, '//*[@id="carrotquest-messenger-smallpopup"]/div[1]/div').click()
+        time.sleep(5)
         
-        # driver.switch_to.default_content()
+        driver.switch_to.default_content()
         
         frame_sup = driver.find_element(By.ID, 'carrot-messenger-collapsed-frame')
         driver.switch_to.frame(frame_sup)
